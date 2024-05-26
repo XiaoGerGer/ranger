@@ -91,7 +91,7 @@ public class RangerPolicyRepository {
     private       List<RangerPolicyEvaluator>       policyEvaluators;
     private       List<RangerPolicyEvaluator>       dataMaskPolicyEvaluators;
     private       List<RangerPolicyEvaluator>       rowFilterPolicyEvaluators;
-    private final List<RangerPolicyEvaluator>       auditPolicyEvaluators;
+    private List<RangerPolicyEvaluator>       auditPolicyEvaluators = Collections.emptyList();;
     private       Map<Long, RangerPolicyEvaluator>  policyEvaluatorsMap;
     private       boolean                           isContextEnrichersShared = false;
     private       boolean                           isPreCleaned             = false;

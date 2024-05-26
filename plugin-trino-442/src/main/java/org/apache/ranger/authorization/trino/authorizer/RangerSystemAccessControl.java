@@ -689,9 +689,22 @@ public class RangerSystemAccessControl
       userGroups = identity.getGroups();
     }
 
+    // Simplify kerberos users
+    String user = null;
+    if (identity.getPrincipal().isPresent()) {
+      user = identity.getPrincipal().get().getName();
+      if (user.contains("@")){
+        user = user.split("@")[0];
+      }
+      if (user.contains("/")){
+        user = user.split("/")[0];
+      }
+    } else {
+      user = identity.getUser();
+    }
     RangerTrinoAccessRequest request = new RangerTrinoAccessRequest(
       resource,
-      identity.getUser(),
+       user,
       userGroups,
       accessType
     );
